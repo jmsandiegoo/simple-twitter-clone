@@ -1,0 +1,26 @@
+type Query {
+  # Return all Tweets
+  # For the homepage
+
+  getAllTweets(): [Tweet]
+}
+
+type Tweet {
+  id: ID!
+  content: String!
+
+  # Each tweet is made by a user
+  hasUser: User!
+}
+
+type User {
+  id: ID!
+  name: String!
+  username: String!
+  email: String!
+  
+  # Each User can make multiple tweets
+  hasTweets: [Tweet]
+}
+
+
