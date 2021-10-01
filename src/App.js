@@ -1,11 +1,10 @@
 import React from "react";
-import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Landing } from "./features/landing";
-import Login from "./features/landing/Login";
-import Register from "./features/landing/Register";
+import { Login } from "./features/login";
+import { Register } from "./features/register";
 
 function App() {
   return (
