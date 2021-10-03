@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import landingBannerImg from "../../assets/images/landing-background.png";
+import { IconContainer } from "../../shared/Icon.styled";
+import { Logo } from "../../shared/Icons";
 
 export const LandingContainer = styled.div`
   display: flex;
@@ -17,11 +19,30 @@ export const LandingContainer = styled.div`
 
   & > section:last-of-type {
     flex: 4.5;
+    display: flex;
+    align-items: center;
+    padding: 25px;
   }
 
-  & > section:first-of-type svg {
-    fill: ${({ theme }) => theme.colors.secondary};
-    max-width: 380px;
+  & a {
+    display: block;
+    margin: 15px 0;
+  }
+
+  & h1 {
+    font-weight: 900;
+    font-size: 3.5rem;
+    font-stretch: extra-expanded;
+    padding: 40px 0;
+  }
+
+  & h2 {
+    font-weight: 900;
+  }
+`;
+
+export const LogoBanner = styled(Logo)`
+  & svg {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -29,4 +50,4 @@ export const LandingContainer = styled.div`
     right: 0;
     margin: auto;
   }
-`;
+`

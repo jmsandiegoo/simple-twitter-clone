@@ -3,7 +3,7 @@ import { normalize } from "styled-normalize";
 
 export const GlobalStyle = createGlobalStyle`
     ${normalize}
-
+    
     html {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
@@ -21,5 +21,6 @@ export const GlobalStyle = createGlobalStyle`
     body {
         color: ${({ theme }) => theme.colors.text};
         background-color: ${({ theme }) => theme.colors.background};
+        font-family: 'Lato', sans-serif;
     }
 `;

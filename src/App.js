@@ -3,8 +3,7 @@ import { Counter } from "./features/counter/Counter";
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Landing } from "./features/landing";
-import { Login } from "./features/login";
-import { Register } from "./features/register";
+import { Login, Register } from "./features/authentication";
 
 function App() {
   return (
