@@ -12,17 +12,27 @@ export default function Landing() {
   return (
     <LandingContainer>
       <section>
-        <LogoBanner fill={theme.colors.accent} maxWidth="380px"/>
+        <LogoBanner fill={theme.colors.accent} maxWidth="380px" />
       </section>
       <section>
         <div>
-          <Logo height="3rem"/>
+          <Logo height="3rem" />
           <h1>Happening Now</h1>
           <h2>Join Twitter Clone Today.</h2>
-          <Button buttonType="secondary" maxWidth="300px" onClick={() => history.push("/signup")}>
+          <Button
+            as="a"
+            buttonType="secondary"
+            maxWidth="300px"
+            onClick={() => history.push("/signup")}
+          >
             Sign Up
           </Button>
-          <Button buttonType="primary" maxWidth="300px" onClick={() => history.push("/login")}>
+          <Button
+            as="a"
+            buttonType="primary"
+            maxWidth="300px"
+            onClick={() => history.push("/login")}
+          >
             Sign In
           </Button>
         </div>
