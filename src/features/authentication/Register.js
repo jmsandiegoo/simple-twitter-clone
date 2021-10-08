@@ -1,9 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
+// import { Auth } from "aws-amplify";
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
-import { Wrapper, Modal, ModalHeader, ModalContent, StyledExit } from "./style";
+import {
+  Wrapper,
+  Modal,
+  ModalHeader,
+  ModalContent,
+  StyledExit,
+  InputWrapper,
+  SelectWrapper,
+  StyledLabel,
+  StyledInput,
+  StyledSelect,
+  SelectContainer,
+  SubmitButtonWrapper,
+} from "./style";
 import { Logo } from "../../shared/Icons";
-import { current } from "immer";
+import { isLeapYear } from "../../app/utility";
+import { Button } from "../../shared/Button.styled";
+import { StyledSmall } from "../../shared/Small.styled";
 
 export default function Register() {
   const history = useHistory();
@@ -16,8 +32,9 @@ export default function Register() {
       birthYear: "",
     },
   });
-  const watchAllFields = watch();
-  console.log(watchAllFields);
+  const birthMonth = watch("birthMonth");
+  const birthDay = watch("birthDay");
+  const birthYear = watch("birthYear");
   const months = [
     "January",
     "February",
@@ -34,35 +51,30 @@ export default function Register() {
   ];
 
   const populateMonths = () => {
-    return months.map((month, index) => (
+    return months.map((month) => (
       <option key={month} value={month}>
         {month}
       </option>
     ));
   };
 
-  const populateDays = (month) => {
-    let dayNum;
+  const populateDays = () => {
+    let dayNum = 31;
     const dayComponents = [];
     if (
-      month === "January" ||
-      month === "March" ||
-      month === "May" ||
-      month === "July" ||
-      month === "August" ||
-      month === "October" ||
-      month === "December"
-    ) {
-      dayNum = 31;
-    } else if (
-      month === "April" ||
-      month === "June" ||
-      month === "September" ||
-      month === "November"
+      birthMonth &&
+      (birthMonth === "April" ||
+        birthMonth === "June" ||
+        birthMonth === "September" ||
+        birthMonth === "November")
     ) {
       dayNum = 30;
-    } else {
+    } else if (birthMonth && birthMonth === "February") {
       // check if leap year
+      dayNum = 29;
+      if (birthYear && !isLeapYear(birthYear)) {
+        dayNum = 28;
+      }
     }
     for (let i = 1; i <= dayNum; i++) {
       dayComponents.push(
@@ -79,17 +91,42 @@ export default function Register() {
     const currentYear = new Date().getFullYear();
     const startYear = currentYear - 115;
     for (let i = startYear; i < currentYear; i++) {
-      years.unshift(
-        <option key={i} value={i}>
-          {i}
-        </option>
-      );
+      // only render when its feb
+      years.unshift(i);
+    }
+
+    for (let i = years.length - 1; i >= 0; i--) {
+      let isRemoved = false;
+      if (
+        birthMonth &&
+        birthMonth === "February" &&
+        birthDay &&
+        birthDay === "29" &&
+        !isLeapYear(years[i])
+      ) {
+        years.splice(i, 1);
+        isRemoved = true;
+      }
+
+      if (!isRemoved) {
+        years.splice(
+          i,
+          1,
+          <option key={years[i]} value={years[i]}>
+            {years[i]}
+          </option>
+        );
+      }
     }
     return years;
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+    // const { username, password, email } = data;
+    // try {
+    //   const { user } = await Auth.sigUp({});
+    // } catch (error) {}
   };
 
   const exitHandler = () => {
@@ -104,33 +141,60 @@ export default function Register() {
           <Logo width="2rem" />
         </ModalHeader>
         <ModalContent>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form>
             <h2>Create your account</h2>
-            <div>
-              <input {...register("name")} />
-            </div>
-            <div>
-              <input {...register("email")} />
-            </div>
+            <InputWrapper>
+              <StyledLabel>Name</StyledLabel>
+              <StyledInput {...register("name")} />
+            </InputWrapper>
+            <InputWrapper>
+              <StyledLabel>Email</StyledLabel>
+              <StyledInput {...register("email")} />
+            </InputWrapper>
+            <InputWrapper>
+              <StyledLabel>Username</StyledLabel>
+              <StyledInput {...register("username")} />
+            </InputWrapper>
+
             <h4>Date of birth</h4>
-            <p>
+            <StyledSmall>
               This will not be shown publicly. Confirm your own age, even if
               this account is for a business, a pet, or something else.
-            </p>
-            <select defaultValue="" {...register("birthMonth")}>
-              <option value="" disabled></option>
-              {populateMonths()}
-            </select>
-            <select defaultValue="" {...register("birthDay")}>
-              <option value="" disabled></option>
-              {populateDays(watchAllFields.birthMonth)}
-            </select>
-            <select defaultValue="" {...register("birthYear")}>
-              <option value="" disabled></option>
-              {populateYears()}
-            </select>
+            </StyledSmall>
+            <SelectContainer>
+              <SelectWrapper>
+                <StyledLabel>Month</StyledLabel>
+                <StyledSelect defaultValue="" {...register("birthMonth")}>
+                  <option value="" disabled></option>
+                  {populateMonths()}
+                </StyledSelect>
+              </SelectWrapper>
+              <SelectWrapper>
+                <StyledLabel>Day</StyledLabel>
+                <StyledSelect defaultValue="" {...register("birthDay")}>
+                  <option value="" disabled></option>
+                  {populateDays()}
+                </StyledSelect>
+              </SelectWrapper>
+              <SelectWrapper>
+                <StyledLabel>Year</StyledLabel>
+                <StyledSelect defaultValue="" {...register("birthYear")}>
+                  <option value="" disabled></option>
+                  {populateYears()}
+                </StyledSelect>
+              </SelectWrapper>
+            </SelectContainer>
           </form>
-          <p>{watchAllFields.name}</p>
+          <SubmitButtonWrapper>
+            <Button
+              type="submit"
+              width="95%"
+              buttonType="secondary"
+              onClick={handleSubmit(onSubmit)}
+            >
+              Sign Up
+            </Button>
+          </SubmitButtonWrapper>
         </ModalContent>
       </Modal>
     </Wrapper>

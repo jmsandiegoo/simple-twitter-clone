@@ -10,7 +10,7 @@ export const Wrapper = styled(Container)`
   align-items: center;
   min-height: 100vh;
   padding: 0;
-`
+`;
 
 export const Modal = styled.div`
   padding: 15px;
@@ -19,8 +19,8 @@ export const Modal = styled.div`
   height: 650px;
   max-height: 100%;
   border-radius: 15px;
-  background-color: ${({theme}) => theme.colors.background};
-`
+  background-color: ${({ theme }) => theme.colors.background};
+`;
 
 export const ModalHeader = styled(Container)`
   padding: 0;
@@ -33,8 +33,58 @@ export const ModalHeader = styled(Container)`
     top: 50%;
     transform: translateY(-50%);
   }
-`
+`;
 
-export const ModalContent = styled(Container)`
+export const ModalContent = styled(Container)``;
 
-`
+export const InputWrapper = styled.div`
+  position: relative;
+  height: 50px;
+  padding: 5px;
+  border: 0.1px solid ${({ theme }) => theme.colors.smallText};
+  border-radius: 3px;
+  margin: 20px 0;
+`;
+
+export const StyledLabel = styled.label`
+  font-size: 13px;
+  color: ${({ theme }) => theme.colors.smallText};
+`;
+
+export const StyledInput = styled.input`
+  background-color: ${({ theme }) => theme.colors.background};
+  width: 100%;
+  color: ${({ theme }) => theme.colors.text};
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const StyledSelect = styled.select`
+  background-color: ${({ theme }) => theme.colors.background};
+  width: 100%;
+  color: ${({ theme }) => theme.colors.text};
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const SelectWrapper = styled.div`
+  height: 50px;
+  padding: 5px;
+  border: 0.1px solid ${({ theme }) => theme.colors.smallText};
+  margin: 20px 5px;
+  flex: ${({ flex }) => flex || 1};
+`;
+
+export const SelectContainer = styled.div`
+  display: flex;
+`;
+
+export const SubmitButtonWrapper = styled.div`
+  text-align: center;
+`;
