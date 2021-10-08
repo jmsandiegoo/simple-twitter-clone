@@ -1,27 +1,15 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-simpletwitterclone-dev-233038-authRole",
-      "UnauthRoleArn": "arn:aws:iam::877467410313:role/amplify-simpletwitterclone-dev-233038-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::877467410313:role/amplify-simpletwitterclone-dev-233038-authRole",
+      "AuthRoleName": "amplify-simpletwitterclone-dev-113155-authRole",
+      "UnauthRoleArn": "arn:aws:iam::877467410313:role/amplify-simpletwitterclone-dev-113155-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::877467410313:role/amplify-simpletwitterclone-dev-113155-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-simpletwitterclone-dev-233038-deployment",
-      "UnauthRoleName": "amplify-simpletwitterclone-dev-233038-unauthRole",
-      "StackName": "amplify-simpletwitterclone-dev-233038",
-      "StackId": "arn:aws:cloudformation:us-east-1:877467410313:stack/amplify-simpletwitterclone-dev-233038/e1664c20-1fa7-11ec-b3aa-0ea9debfa557",
-      "AmplifyAppId": "dkwp5wh1hl9tt"
-    },
-    "categories": {
-      "function": {
-        "simpletwitterclone9a090370CustomMessage": {
-          "REDIRECTURL": "",
-          "EMAILSUBJECT": "Twitter Clone Confirmation Email",
-          "EMAILMESSAGE": "Please confirm your email address to start using twitter clone"
-        }
-      },
-      "auth": {
-        "simpletwitterclone9a090370": {}
-      }
+      "DeploymentBucketName": "amplify-simpletwitterclone-dev-113155-deployment",
+      "UnauthRoleName": "amplify-simpletwitterclone-dev-113155-unauthRole",
+      "StackName": "amplify-simpletwitterclone-dev-113155",
+      "StackId": "arn:aws:cloudformation:us-east-1:877467410313:stack/amplify-simpletwitterclone-dev-113155/4bfa17e0-27e8-11ec-89bc-12364d599a4d",
+      "AmplifyAppId": "d2uemtw1k8o5pr"
     }
   }
 }
