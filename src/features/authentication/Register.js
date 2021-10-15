@@ -1,7 +1,13 @@
-import React from "react";
-// import { Auth } from "aws-amplify";
-import { useHistory } from "react-router";
+import React, { useEffect, useState } from "react";
+import { Redirect, useHistory } from "react-router";
 import { useForm } from "react-hook-form";
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  signUp,
+  updateError,
+  authIsLoading,
+  authUser,
+} from './authenticationSlice';
 import {
   Wrapper,
   Modal,
@@ -20,10 +26,15 @@ import { Logo } from "../../shared/Icons";
 import { isLeapYear } from "../../app/utility";
 import { Button } from "../../shared/Button.styled";
 import { StyledSmall } from "../../shared/Small.styled";
+import LoadingIndicator from "./component/LoadingIndicator";
+
 
 export default function Register() {
+  const isLoading = useSelector(authIsLoading);
+
+  const dispatch = useDispatch();
   const history = useHistory();
-  const { register, handleSubmit, watch } = useForm({
+  const { register, handleSubmit, watch, getValues } = useForm({
     defaultValues: {
       name: "",
       email: "",
@@ -51,7 +62,7 @@ export default function Register() {
   ];
 
   const populateMonths = () => {
-    return months.map((month) => (
+    return months.map((month, index) => (
       <option key={month} value={month}>
         {month}
       </option>
@@ -122,15 +133,17 @@ export default function Register() {
   };
 
   const onSubmit = async (data) => {
-    console.log(data);
-    // const { username, password, email } = data;
-    // try {
-    //   const { user } = await Auth.sigUp({});
-    // } catch (error) {}
-  };
+    data['birthMonth'] = months.indexOf(data['birthMonth']);
+    try {
+      await dispatch(signUp(data)).unwrap();
+      history.replace(`/verifycode?username=${data['username']}&email=${data['email']}`);
+    } catch(error) {
+      console.error(error);
+    }
+  }
 
   const exitHandler = () => {
-    history.goBack();
+    history.replace('/');
   };
 
   return (
@@ -141,60 +154,72 @@ export default function Register() {
           <Logo width="2rem" />
         </ModalHeader>
         <ModalContent>
-          <form>
-            <h2>Create your account</h2>
-            <InputWrapper>
-              <StyledLabel>Name</StyledLabel>
-              <StyledInput {...register("name")} />
-            </InputWrapper>
-            <InputWrapper>
-              <StyledLabel>Email</StyledLabel>
-              <StyledInput {...register("email")} />
-            </InputWrapper>
-            <InputWrapper>
-              <StyledLabel>Username</StyledLabel>
-              <StyledInput {...register("username")} />
-            </InputWrapper>
+          { !isLoading ? 
+            (<>
+              <form>
+                <h2>Create your account</h2>
+                <InputWrapper>
+                  <StyledLabel>Name</StyledLabel>
+                  <StyledInput {...register("name")} />
+                </InputWrapper>
+                <InputWrapper>
+                  <StyledLabel>Email</StyledLabel>
+                  <StyledInput type="email" {...register("email")} />
+                </InputWrapper>
+                <InputWrapper>
+                  <StyledLabel>Username</StyledLabel>
+                  <StyledInput {...register("username")} />
+                </InputWrapper>
+                <InputWrapper>
+                  <StyledLabel>Password</StyledLabel>
+                  <StyledInput type="password" {...register("password")} autoComplete="off"/>
+                </InputWrapper>
 
-            <h4>Date of birth</h4>
-            <StyledSmall>
-              This will not be shown publicly. Confirm your own age, even if
-              this account is for a business, a pet, or something else.
-            </StyledSmall>
-            <SelectContainer>
-              <SelectWrapper>
-                <StyledLabel>Month</StyledLabel>
-                <StyledSelect defaultValue="" {...register("birthMonth")}>
-                  <option value="" disabled></option>
-                  {populateMonths()}
-                </StyledSelect>
-              </SelectWrapper>
-              <SelectWrapper>
-                <StyledLabel>Day</StyledLabel>
-                <StyledSelect defaultValue="" {...register("birthDay")}>
-                  <option value="" disabled></option>
-                  {populateDays()}
-                </StyledSelect>
-              </SelectWrapper>
-              <SelectWrapper>
-                <StyledLabel>Year</StyledLabel>
-                <StyledSelect defaultValue="" {...register("birthYear")}>
-                  <option value="" disabled></option>
-                  {populateYears()}
-                </StyledSelect>
-              </SelectWrapper>
-            </SelectContainer>
-          </form>
-          <SubmitButtonWrapper>
-            <Button
-              type="submit"
-              width="95%"
-              buttonType="secondary"
-              onClick={handleSubmit(onSubmit)}
-            >
-              Sign Up
-            </Button>
-          </SubmitButtonWrapper>
+                <h4>Date of birth</h4>
+                <StyledSmall>
+                  This will not be shown publicly. Confirm your own age, even if
+                  this account is for a business, a pet, or something else.
+                </StyledSmall>
+                <SelectContainer>
+                  <SelectWrapper>
+                    <StyledLabel>Month</StyledLabel>
+                    <StyledSelect defaultValue="" {...register("birthMonth")}>
+                      <option value="" disabled></option>
+                      {populateMonths()}
+                    </StyledSelect>
+                  </SelectWrapper>
+                  <SelectWrapper>
+                    <StyledLabel>Day</StyledLabel>
+                    <StyledSelect defaultValue="" {...register("birthDay")}>
+                      <option value="" disabled></option>
+                      {populateDays()}
+                    </StyledSelect>
+                  </SelectWrapper>
+                  <SelectWrapper>
+                    <StyledLabel>Year</StyledLabel>
+                    <StyledSelect defaultValue="" {...register("birthYear")}>
+                      <option value="" disabled></option>
+                      {populateYears()}
+                    </StyledSelect>
+                  </SelectWrapper>
+                </SelectContainer>
+              </form>
+              <SubmitButtonWrapper>
+                <Button
+                  type="submit"
+                  width="95%"
+                  buttonType="secondary"
+                  onClick={handleSubmit(onSubmit)}
+                >
+                  Sign Up
+                </Button>
+              </SubmitButtonWrapper>
+            </> )
+            :
+            (
+              <LoadingIndicator/>
+            )
+          }
         </ModalContent>
       </Modal>
     </Wrapper>

@@ -20,6 +20,8 @@ export const Modal = styled.div`
   max-height: 100%;
   border-radius: 15px;
   background-color: ${({ theme }) => theme.colors.background};
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ModalHeader = styled(Container)`
@@ -35,7 +37,9 @@ export const ModalHeader = styled(Container)`
   }
 `;
 
-export const ModalContent = styled(Container)``;
+export const ModalContent = styled(Container)`
+  flex: 1;
+`;
 
 export const InputWrapper = styled.div`
   position: relative;
@@ -88,3 +92,7 @@ export const SelectContainer = styled.div`
 export const SubmitButtonWrapper = styled.div`
   text-align: center;
 `;
+
+export const LoadingIndicatorWrapper = styled.div`
+  flex: 1;
+`
