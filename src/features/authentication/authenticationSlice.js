@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Auth } from "aws-amplify";
 
 const initialState = {
@@ -8,24 +8,26 @@ const initialState = {
 };
 
 export const signUp = createAsyncThunk(
-  'authentication/signUp',
+  "authentication/signUp",
   async (data, thunkAPI) => {
-    const { name, email, username, password, birthMonth, birthDay, birthYear } = data;
+    const { name, email, username, password, birthMonth, birthDay, birthYear } =
+      data;
     console.log(data);
-    const birthdate = `${birthYear}-${("0" + birthMonth).slice(-2)}-${("0" + birthDay).slice(-2)}`;
+    const birthdate = `${birthYear}-${("0" + birthMonth).slice(-2)}-${(
+      "0" + birthDay
+    ).slice(-2)}`;
     console.log(birthdate);
 
     try {
-      const { user } = await Auth.signUp({
+      await Auth.signUp({
         username,
         password,
         attributes: {
           name,
           email,
           birthdate,
-        }
+        },
       });
-      return user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -33,19 +35,19 @@ export const signUp = createAsyncThunk(
 );
 
 export const confirmSignUp = createAsyncThunk(
-  'authentication/confirmSignUp',
+  "authentication/confirmSignUp",
   async (data, thunkAPI) => {
     const { username, code } = data;
     try {
-      await Auth.confirmSignUp(username, code)
+      await Auth.confirmSignUp(username, code);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   }
-)
+);
 
 export const signIn = createAsyncThunk(
-  'authentication/signIn',
+  "authentication/signIn",
   async (data, thunkAPI) => {
     const { username, password } = data;
     try {
@@ -55,18 +57,17 @@ export const signIn = createAsyncThunk(
       return thunkAPI.rejectWithValue(error);
     }
   }
-)
+);
 
 export const authenticationSlice = createSlice({
-  name: 'authentication',
+  name: "authentication",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    updateError: (state, action) => {
-      state.error = action.payload;
-    },
-    updateUser: (state, action) => {
-      state.user = action.payload;
+    updateAuth: (state, action) => {
+      const { isSignedIn, user } = action.payload;
+      state.isSignedIn = isSignedIn;
+      state.user = user;
     },
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -74,7 +75,7 @@ export const authenticationSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // signUp
-      .addCase(signUp.pending, (state) =>{
+      .addCase(signUp.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(signUp.fulfilled, (state, action) => {
@@ -85,18 +86,18 @@ export const authenticationSlice = createSlice({
       })
 
       // confirmSignUp
-      .addCase(confirmSignUp.pending, (state) =>{
+      .addCase(confirmSignUp.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(confirmSignUp.fulfilled, (state, action) => {
+      .addCase(confirmSignUp.fulfilled, (state) => {
         state.isLoading = false;
       })
-      .addCase(confirmSignUp.rejected, (state, action) => {
+      .addCase(confirmSignUp.rejected, (state) => {
         state.isLoading = false;
       })
 
       // signIn
-      .addCase(signIn.pending, (state) =>{
+      .addCase(signIn.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(signIn.fulfilled, (state, action) => {
@@ -104,13 +105,13 @@ export const authenticationSlice = createSlice({
         state.user = action.payload;
         state.isSignedIn = true;
       })
-      .addCase(signIn.rejected, (state, action) => {
+      .addCase(signIn.rejected, (state) => {
         state.isLoading = false;
       });
   },
 });
 
-export const { updateError, updateUser } = authenticationSlice.actions;
+export const { updateAuth } = authenticationSlice.actions;
 
 export const authIsLoading = (state) => state.authentication.isLoading;
 export const authError = (state) => state.authentication.error;

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router";
 import { useForm } from "react-hook-form";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import {
   signUp,
   updateError,
   authIsLoading,
   authUser,
-} from './authenticationSlice';
+} from "./authenticationSlice";
 import {
   Wrapper,
   Modal,
@@ -27,7 +27,6 @@ import { isLeapYear } from "../../app/utility";
 import { Button } from "../../shared/Button.styled";
 import { StyledSmall } from "../../shared/Small.styled";
 import LoadingIndicator from "./component/LoadingIndicator";
-
 
 export default function Register() {
   const isLoading = useSelector(authIsLoading);
@@ -133,17 +132,19 @@ export default function Register() {
   };
 
   const onSubmit = async (data) => {
-    data['birthMonth'] = months.indexOf(data['birthMonth']);
+    data["birthMonth"] = months.indexOf(data["birthMonth"]);
     try {
       await dispatch(signUp(data)).unwrap();
-      history.replace(`/verifycode?username=${data['username']}&email=${data['email']}`);
-    } catch(error) {
+      history.replace(
+        `/verifycode?username=${data["username"]}&email=${data["email"]}`
+      );
+    } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   const exitHandler = () => {
-    history.replace('/');
+    history.replace("/");
   };
 
   return (
@@ -154,8 +155,8 @@ export default function Register() {
           <Logo width="2rem" />
         </ModalHeader>
         <ModalContent>
-          { !isLoading ? 
-            (<>
+          {!isLoading ? (
+            <>
               <form>
                 <h2>Create your account</h2>
                 <InputWrapper>
@@ -172,7 +173,11 @@ export default function Register() {
                 </InputWrapper>
                 <InputWrapper>
                   <StyledLabel>Password</StyledLabel>
-                  <StyledInput type="password" {...register("password")} autoComplete="off"/>
+                  <StyledInput
+                    type="password"
+                    {...register("password")}
+                    autoComplete="off"
+                  />
                 </InputWrapper>
 
                 <h4>Date of birth</h4>
@@ -214,12 +219,10 @@ export default function Register() {
                   Sign Up
                 </Button>
               </SubmitButtonWrapper>
-            </> )
-            :
-            (
-              <LoadingIndicator/>
-            )
-          }
+            </>
+          ) : (
+            <LoadingIndicator />
+          )}
         </ModalContent>
       </Modal>
     </Wrapper>
