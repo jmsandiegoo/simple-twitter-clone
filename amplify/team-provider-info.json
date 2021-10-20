@@ -15,6 +15,14 @@
       "auth": {
         "simpletwitterclone0c713b88": {},
         "simpletwittercloned8ce95b6": {}
+      },
+      "api": {
+        "simpletwitterclone": {
+          "rdsRegion": "us-east-1",
+          "rdsClusterIdentifier": "arn:aws:rds:us-east-1:877467410313:cluster:amplify-serverless-cluster",
+          "rdsSecretStoreArn": "arn:aws:secretsmanager:us-east-1:877467410313:secret:rds-db-credentials/cluster-ZT2TJLOCQO5RQWIZCIMDW5JXKE/master-Sr5P5s",
+          "rdsDatabaseName": "twitterclonedb"
+        }
       }
     }
   }

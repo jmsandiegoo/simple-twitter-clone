@@ -1,0 +1,61 @@
+type User {
+  username: String!
+  name: String!
+  email: String!
+  birthDate: Timestamp!
+
+  tweets: [Tweet]!
+  retweets: [Retweet]!
+}
+
+type Tweet {
+  id: ID!
+  content: String!
+  createdOn: Timestamp!
+  user: User!
+}
+
+type Retweet {
+  createdOn: Timestamp!
+  tweet: Tweet!
+  user: User!
+}
+
+type Like {
+  tweet: Tweet!
+  user: User!
+}
+
+type Comment {
+  id: ID!
+  content: String!
+  createdOn: Timestamp!
+
+  tweet: Tweet!
+  user: User!
+} 
+
+# Many to many Relationships
+type Follow {
+  following: User!
+  followee: User!
+}
+
+# Custom Types
+scalar Timestamp
+
+type Query {
+  Users: [User]
+  User(username: String!): User
+  Tweets(username: String): [Tweet]
+  Tweet(id: ID!): Tweet
+}
+
+type Mutation {
+  createUser (
+    username: String!, 
+    name: String!,
+    email: String!,
+    birthDate: Timestamp!
+  ): User
+}
