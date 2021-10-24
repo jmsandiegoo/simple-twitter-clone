@@ -1,0 +1,9 @@
+#set( $updateList = {} )
+#foreach( $entry in $ctx.args.updateRetweetInput.keySet() )
+  #set( $discard = $updateList.put($entry, "'$ctx.args.updateRetweetInput[$entry]'") )
+#end
+#set( $update = $updateList.toString().replace("{","").replace("}","") )
+{
+  "version": "2018-05-29",
+  "statements":   ["UPDATE Retweet SET $update WHERE user_id='$ctx.args.updateRetweetInput.user_id'", "SELECT * FROM Retweet WHERE user_id='$ctx.args.updateRetweetInput.user_id'"]
+}

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "auth": {
+      "simpletwittercloned8ce95b6": [
+        "create"
+      ]
+    },
+    "api": {
+      "simpletwitterclone": [
+        "Query",
+        "Mutation"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

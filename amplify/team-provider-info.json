@@ -1,29 +1,29 @@
 {
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-simpletwitterclone-dev-113155-authRole",
-      "UnauthRoleArn": "arn:aws:iam::877467410313:role/amplify-simpletwitterclone-dev-113155-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::877467410313:role/amplify-simpletwitterclone-dev-113155-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-simpletwitterclone-dev-113155-deployment",
-      "UnauthRoleName": "amplify-simpletwitterclone-dev-113155-unauthRole",
-      "StackName": "amplify-simpletwitterclone-dev-113155",
-      "StackId": "arn:aws:cloudformation:us-east-1:877467410313:stack/amplify-simpletwitterclone-dev-113155/4bfa17e0-27e8-11ec-89bc-12364d599a4d",
-      "AmplifyAppId": "d2uemtw1k8o5pr"
-    },
-    "categories": {
-      "auth": {
-        "simpletwitterclone0c713b88": {},
-        "simpletwittercloned8ce95b6": {}
-      },
-      "api": {
-        "simpletwitterclone": {
-          "rdsRegion": "us-east-1",
-          "rdsClusterIdentifier": "arn:aws:rds:us-east-1:877467410313:cluster:amplify-serverless-cluster",
-          "rdsSecretStoreArn": "arn:aws:secretsmanager:us-east-1:877467410313:secret:rds-db-credentials/cluster-ZT2TJLOCQO5RQWIZCIMDW5JXKE/master-Sr5P5s",
-          "rdsDatabaseName": "twitterclonedb"
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-simpletwitterclone-dev-113155-authRole",
+            "UnauthRoleArn": "arn:aws:iam::877467410313:role/amplify-simpletwitterclone-dev-113155-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::877467410313:role/amplify-simpletwitterclone-dev-113155-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-simpletwitterclone-dev-113155-deployment",
+            "UnauthRoleName": "amplify-simpletwitterclone-dev-113155-unauthRole",
+            "StackName": "amplify-simpletwitterclone-dev-113155",
+            "StackId": "arn:aws:cloudformation:us-east-1:877467410313:stack/amplify-simpletwitterclone-dev-113155/4bfa17e0-27e8-11ec-89bc-12364d599a4d",
+            "AmplifyAppId": "d2uemtw1k8o5pr"
+        },
+        "categories": {
+            "auth": {
+                "simpletwitterclone0c713b88": {},
+                "simpletwittercloned8ce95b6": {}
+            },
+            "api": {
+                "simpletwitterclone": {
+                    "rdsRegion": "us-east-1",
+                    "rdsClusterIdentifier": "arn:aws:rds:us-east-1:877467410313:cluster:amplify-serverless-cluster",
+                    "rdsSecretStoreArn": "arn:aws:secretsmanager:us-east-1:877467410313:secret:rds-db-credentials/cluster-ZT2TJLOCQO5RQWIZCIMDW5JXKE/master-Sr5P5s",
+                    "rdsDatabaseName": "twitterclonedb"
+                }
+            }
         }
-      }
     }
-  }
 }
