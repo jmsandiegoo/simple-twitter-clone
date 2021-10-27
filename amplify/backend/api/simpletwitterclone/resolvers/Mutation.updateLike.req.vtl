@@ -1,9 +1,0 @@
-#set( $updateList = {} )
-#foreach( $entry in $ctx.args.updateLikeInput.keySet() )
-  #set( $discard = $updateList.put($entry, "'$ctx.args.updateLikeInput[$entry]'") )
-#end
-#set( $update = $updateList.toString().replace("{","").replace("}","") )
-{
-  "version": "2018-05-29",
-  "statements":   ["UPDATE Like SET $update WHERE user_id='$ctx.args.updateLikeInput.user_id'", "SELECT * FROM Like WHERE user_id='$ctx.args.updateLikeInput.user_id'"]
-}

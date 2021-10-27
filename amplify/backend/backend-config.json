@@ -1,6 +1,6 @@
 {
   "auth": {
-    "simpletwittercloned8ce95b6": {
+    "simpletwittercloneb1022521": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -10,7 +10,6 @@
           "PREFERRED_USERNAME"
         ],
         "signupAttributes": [
-          "BIRTHDATE",
           "EMAIL",
           "NAME"
         ],
@@ -37,25 +36,24 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7,
-              "description": ""
+              "apiKeyExpirationDays": 20,
+              "description": "dev api key"
             }
           },
           "additionalAuthenticationProviders": []
         }
-      },
-      "rdsInit": true
+      }
     }
   },
   "function": {
-    "signuptrigger": {
+    "lambdaResolver": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "auth",
-          "resourceName": "simpletwittercloned8ce95b6",
+          "resourceName": "simpletwittercloneb1022521",
           "attributes": [
             "UserPoolId"
           ]

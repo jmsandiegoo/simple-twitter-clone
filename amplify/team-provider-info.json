@@ -1,29 +1,26 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-simpletwitterclone-dev-113155-authRole",
-            "UnauthRoleArn": "arn:aws:iam::877467410313:role/amplify-simpletwitterclone-dev-113155-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::877467410313:role/amplify-simpletwitterclone-dev-113155-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-simpletwitterclone-dev-113155-deployment",
-            "UnauthRoleName": "amplify-simpletwitterclone-dev-113155-unauthRole",
-            "StackName": "amplify-simpletwitterclone-dev-113155",
-            "StackId": "arn:aws:cloudformation:us-east-1:877467410313:stack/amplify-simpletwitterclone-dev-113155/4bfa17e0-27e8-11ec-89bc-12364d599a4d",
-            "AmplifyAppId": "d2uemtw1k8o5pr"
-        },
-        "categories": {
-            "auth": {
-                "simpletwitterclone0c713b88": {},
-                "simpletwittercloned8ce95b6": {}
-            },
-            "api": {
-                "simpletwitterclone": {
-                    "rdsRegion": "us-east-1",
-                    "rdsClusterIdentifier": "arn:aws:rds:us-east-1:877467410313:cluster:amplify-serverless-cluster",
-                    "rdsSecretStoreArn": "arn:aws:secretsmanager:us-east-1:877467410313:secret:rds-db-credentials/cluster-ZT2TJLOCQO5RQWIZCIMDW5JXKE/master-Sr5P5s",
-                    "rdsDatabaseName": "twitterclonedb"
-                }
-            }
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-simpletwitterclone-dev-180443-authRole",
+      "UnauthRoleArn": "arn:aws:iam::009702079563:role/amplify-simpletwitterclone-dev-180443-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::009702079563:role/amplify-simpletwitterclone-dev-180443-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-simpletwitterclone-dev-180443-deployment",
+      "UnauthRoleName": "amplify-simpletwitterclone-dev-180443-unauthRole",
+      "StackName": "amplify-simpletwitterclone-dev-180443",
+      "StackId": "arn:aws:cloudformation:us-east-1:009702079563:stack/amplify-simpletwitterclone-dev-180443/26a97ac0-3644-11ec-a257-0e964048dd17",
+      "AmplifyAppId": "dbktouqlnztwn"
+    },
+    "categories": {
+      "auth": {
+        "simpletwittercloneb1022521": {}
+      },
+      "function": {
+        "lambdaResolver": {
+          "deploymentBucketName": "amplify-simpletwitterclone-dev-180443-deployment",
+          "s3Key": "amplify-builds/lambdaResolver-4535357230464e714949-build.zip"
         }
+      }
     }
+  }
 }

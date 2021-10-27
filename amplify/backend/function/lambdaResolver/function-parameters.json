@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "auth": {
+      "simpletwittercloneb1022521": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "api": {
+      "simpletwitterclone": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

@@ -1,0 +1,6 @@
+{
+  "dbhost" : "simple-twitter-clone-cluster.c0gpnmjjpzxf.us-east-1.rds.amazonaws.com",
+  "dbname" : "simpletwitterclonedb",
+  "dbuser" :"master",
+  "dbpassword" :"Diego0710!"
+}

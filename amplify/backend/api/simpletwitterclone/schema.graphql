@@ -1,164 +1,27 @@
-input CreateCommentInput {
-  id: Int!
-  content: String!
-  created_on: AWSTimestamp!
-  tweet_id: Int
-  user_id: String
-}
-
-type Comment {
-  id: Int!
-  content: String!
-  created_on: AWSTimestamp!
-  tweet_id: Int
-  user_id: String
-}
-
-input UpdateCommentInput {
-  id: Int!
-  content: String
-  created_on: AWSTimestamp
-  tweet_id: Int
-  user_id: String
-}
-
-input CreateFollowInput {
-  following_id: String!
-  followee_id: String!
-}
-
-type Follow {
-  following_id: String!
-  followee_id: String!
-}
-
-input UpdateFollowInput {
-  following_id: String!
-  followee_id: String!
-}
-
-input CreateLikeInput {
-  tweet_id: Int!
-  user_id: String!
-}
-
-type Like {
-  tweet_id: Int!
-  user_id: String!
-}
-
-input UpdateLikeInput {
-  tweet_id: Int!
-  user_id: String!
-}
-
-input CreateRetweetInput {
-  created_on: AWSTimestamp!
-  tweet_id: Int!
-  user_id: String!
-}
-
-type Retweet {
-  created_on: AWSTimestamp!
-  tweet_id: Int!
-  user_id: String!
-}
-
-input UpdateRetweetInput {
-  created_on: AWSTimestamp
-  tweet_id: Int!
-  user_id: String!
-}
-
-input CreateTweetInput {
-  id: Int!
-  content: String!
-  created_on: AWSTimestamp!
-  user_id: String!
-}
-
-type Tweet {
-  id: Int!
-  content: String!
-  created_on: AWSTimestamp!
-  user_id: String!
-}
-
-input UpdateTweetInput {
-  id: Int!
-  content: String
-  created_on: AWSTimestamp
-  user_id: String
-}
-
-input CreateUserInput {
-  username: String!
-  name: String!
-  email: String!
-  birth_date: AWSTimestamp!
-}
-
-type User {
-  username: String!
-  name: String!
-  email: String!
-  birth_date: AWSTimestamp!
-}
-
-input UpdateUserInput {
-  username: String!
-  name: String
-  email: String
-  birth_date: AWSTimestamp
-}
-
-type Mutation {
-  deleteComment(id: Int!): Comment
-  createComment(createCommentInput: CreateCommentInput!): Comment
-  updateComment(updateCommentInput: UpdateCommentInput!): Comment
-  deleteFollow(followee_id: String!): Follow
-  createFollow(createFollowInput: CreateFollowInput!): Follow
-  updateFollow(updateFollowInput: UpdateFollowInput!): Follow
-  deleteLike(user_id: String!): Like
-  createLike(createLikeInput: CreateLikeInput!): Like
-  updateLike(updateLikeInput: UpdateLikeInput!): Like
-  deleteRetweet(user_id: String!): Retweet
-  createRetweet(createRetweetInput: CreateRetweetInput!): Retweet
-  updateRetweet(updateRetweetInput: UpdateRetweetInput!): Retweet
-  deleteTweet(id: Int!): Tweet
-  createTweet(createTweetInput: CreateTweetInput!): Tweet
-  updateTweet(updateTweetInput: UpdateTweetInput!): Tweet
-  deleteUser(username: String!): User
-  createUser(createUserInput: CreateUserInput!): User
-  updateUser(updateUserInput: UpdateUserInput!): User
-}
-
-type Query {
-  getComment(id: Int!): Comment
-  listComments: [Comment]
-  getFollow(followee_id: String!): Follow
-  listFollows: [Follow]
-  getLike(user_id: String!): Like
-  listLikes: [Like]
-  getRetweet(user_id: String!): Retweet
-  listRetweets: [Retweet]
-  getTweet(id: Int!): Tweet
-  listTweets: [Tweet]
-  getUser(username: String!): User
-  listUsers: [User]
-}
-
-type Subscription {
-  onCreateComment: Comment @aws_subscribe(mutations: ["createComment"])
-  onCreateFollow: Follow @aws_subscribe(mutations: ["createFollow"])
-  onCreateLike: Like @aws_subscribe(mutations: ["createLike"])
-  onCreateRetweet: Retweet @aws_subscribe(mutations: ["createRetweet"])
-  onCreateTweet: Tweet @aws_subscribe(mutations: ["createTweet"])
-  onCreateUser: User @aws_subscribe(mutations: ["createUser"])
-}
-
 schema {
   query: Query
   mutation: Mutation
-  subscription: Subscription
+}
+type User {
+  username: String!
+  email: String!
+  name: String!
+  birthdate: AWSDate!
+  createdAt: AWSTimestamp!
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  name: String!
+  birthdate: AWSDate!
+}
+
+type Query {
+  getUser(username: String!): User
+  getAllUser: [User]
+}
+
+type Mutation {
+  createUser(userInput: UserInput!): User
 }

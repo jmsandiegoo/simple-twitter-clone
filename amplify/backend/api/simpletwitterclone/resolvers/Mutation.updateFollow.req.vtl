@@ -1,9 +1,0 @@
-#set( $updateList = {} )
-#foreach( $entry in $ctx.args.updateFollowInput.keySet() )
-  #set( $discard = $updateList.put($entry, "'$ctx.args.updateFollowInput[$entry]'") )
-#end
-#set( $update = $updateList.toString().replace("{","").replace("}","") )
-{
-  "version": "2018-05-29",
-  "statements":   ["UPDATE Follow SET $update WHERE followee_id='$ctx.args.updateFollowInput.followee_id'", "SELECT * FROM Follow WHERE followee_id='$ctx.args.updateFollowInput.followee_id'"]
-}
