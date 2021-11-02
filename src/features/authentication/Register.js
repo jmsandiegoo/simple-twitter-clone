@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Redirect, useHistory } from "react-router";
+import React from "react";
+import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import {
   signUp,
-  updateError,
-  authIsLoading,
-  authUser,
+  authIsLoading
 } from "./authenticationSlice";
 import {
   Wrapper,
@@ -22,7 +20,7 @@ import {
   SelectContainer,
   SubmitButtonWrapper,
 } from "./style";
-import { Logo } from "../../shared/Icons";
+import { Logo } from "../../shared/component/Icons";
 import { isLeapYear } from "../../app/utility";
 import { Button } from "../../shared/Button.styled";
 import { StyledSmall } from "../../shared/Small.styled";
@@ -33,7 +31,7 @@ export default function Register() {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const { register, handleSubmit, watch, getValues } = useForm({
+  const { register, handleSubmit, watch } = useForm({
     defaultValues: {
       name: "",
       email: "",

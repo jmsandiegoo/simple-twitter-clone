@@ -1,27 +1,6 @@
-schema {
-  query: Query
-  mutation: Mutation
-}
-type User {
+type User @model @key(fields: ["username"]) {
   username: String!
   email: String!
   name: String!
   birthdate: AWSDate!
-  createdAt: AWSTimestamp!
-}
-
-input UserInput {
-  username: String!
-  email: String!
-  name: String!
-  birthdate: AWSDate!
-}
-
-type Query {
-  getUser(username: String!): User
-  getAllUser: [User]
-}
-
-type Mutation {
-  createUser(userInput: UserInput!): User
 }

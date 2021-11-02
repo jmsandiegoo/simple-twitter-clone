@@ -46,7 +46,7 @@
     }
   },
   "function": {
-    "lambdaResolver": {
+    "singupTrigger": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",

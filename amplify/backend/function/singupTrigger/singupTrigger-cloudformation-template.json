@@ -63,12 +63,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "lambdaResolver",
+            "singupTrigger",
             {
               "Fn::Join": [
                 "",
                 [
-                  "lambdaResolver",
+                  "singupTrigger",
                   "-",
                   {
                     "Ref": "env"
@@ -117,12 +117,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "simpletwittercloneLambdaRole25f4a092",
+            "simpletwittercloneLambdaRole3d596d06",
             {
               "Fn::Join": [
                 "",
                 [
-                  "simpletwittercloneLambdaRole25f4a092",
+                  "simpletwittercloneLambdaRole3d596d06",
                   "-",
                   {
                     "Ref": "env"

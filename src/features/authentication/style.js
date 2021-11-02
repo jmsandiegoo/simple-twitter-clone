@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Container } from "../../shared/Container.styled";
-import { Exit } from "../../shared/Icons";
+import { Exit } from "../../shared/component/Icons";
 
 export const StyledExit = styled(Exit)``;
 

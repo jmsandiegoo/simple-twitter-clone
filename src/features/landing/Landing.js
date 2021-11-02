@@ -2,7 +2,7 @@ import React from "react";
 import { useTheme } from "styled-components";
 import { useHistory } from "react-router";
 import { LandingContainer, LogoBanner } from "./styles";
-import { Logo } from "../../shared/Icons";
+import { Logo } from "../../shared/component/Icons";
 import { Button } from "../../shared/Button.styled";
 
 export default function Landing() {

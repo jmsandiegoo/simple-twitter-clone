@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -16,7 +16,7 @@ import {
 } from "./style";
 import { Button } from "../../shared/Button.styled";
 import { StyledSmall } from "../../shared/Small.styled";
-import { Logo } from "../../shared/Icons";
+import { Logo } from "../../shared/component/Icons";
 import LoadingIndicator from "./component/LoadingIndicator";
 
 export default function VerifyCode() {

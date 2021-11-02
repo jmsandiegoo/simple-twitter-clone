@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import landingBannerImg from "../../assets/images/landing-background.png";
-import { IconContainer } from "../../shared/Icon.styled";
-import { Logo } from "../../shared/Icons";
+import { Logo } from "../../shared/component/Icons";
 
 export const LandingContainer = styled.div`
   display: flex;

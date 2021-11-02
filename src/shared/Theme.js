@@ -7,6 +7,7 @@ export const theme = {
     smallText: "#6e767d",
     inverseText: "#0f1419",
     background: "#000000",
+    border: "#2f3336",
   },
   button: {},
 };

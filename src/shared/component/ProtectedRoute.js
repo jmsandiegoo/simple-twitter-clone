@@ -2,9 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 import {
-  authUser,
   authIsSignedIn,
-} from "../features/authentication/authenticationSlice";
+} from "../../features/authentication/authenticationSlice";
 
 function ProtectedRoute({ component: Component, ...rest }) {
   const isSignedIn = useSelector(authIsSignedIn);

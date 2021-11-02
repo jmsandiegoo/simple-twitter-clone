@@ -19,6 +19,10 @@
         "lambdaResolver": {
           "deploymentBucketName": "amplify-simpletwitterclone-dev-180443-deployment",
           "s3Key": "amplify-builds/lambdaResolver-4535357230464e714949-build.zip"
+        },
+        "singupTrigger": {
+          "deploymentBucketName": "amplify-simpletwitterclone-dev-180443-deployment",
+          "s3Key": "amplify-builds/singupTrigger-76485574767143727254-build.zip"
         }
       }
     }

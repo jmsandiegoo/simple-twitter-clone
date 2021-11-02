@@ -1,5 +1,5 @@
 import React from "react";
-import { IconContainer } from "./Icon.styled";
+import { IconContainer } from "../Icon.styled";
 
 export function Logo({className, fill, width, maxWidth, height}) {
   return (
