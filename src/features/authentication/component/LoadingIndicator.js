@@ -1,7 +1,6 @@
 import React from 'react'
 import { SpinnerCircularFixed } from 'spinners-react';
-import styled from 'styled-components';
-import { useTheme } from 'styled-components';
+import styled, {useTheme} from 'styled-components/macro';
 
 const LoadingIndicatorWrapper = styled.div`
   height: 100%;

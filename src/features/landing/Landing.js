@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "styled-components";
+import { useTheme } from "styled-components/macro";
 import { useHistory } from "react-router";
 import { LandingContainer, LogoBanner } from "./styles";
 import { Logo } from "../../shared/component/Icons";

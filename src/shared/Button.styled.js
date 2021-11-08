@@ -1,4 +1,4 @@
-import styled, { ThemeConsumer } from "styled-components";
+import styled, { ThemeConsumer } from "styled-components/macro";
 
 export const Button = styled.button`
   border-radius: 50px;

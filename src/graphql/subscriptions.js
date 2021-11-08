@@ -1,12 +1,9 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createUser = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
       username
       email
       name
@@ -46,12 +43,9 @@ export const createUser = /* GraphQL */ `
     }
   }
 `;
-export const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    updateUser(input: $input, condition: $condition) {
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
       username
       email
       name
@@ -91,12 +85,9 @@ export const updateUser = /* GraphQL */ `
     }
   }
 `;
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    deleteUser(input: $input, condition: $condition) {
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
       username
       email
       name
@@ -136,12 +127,9 @@ export const deleteUser = /* GraphQL */ `
     }
   }
 `;
-export const createTweet = /* GraphQL */ `
-  mutation CreateTweet(
-    $input: CreateTweetInput!
-    $condition: ModelTweetConditionInput
-  ) {
-    createTweet(input: $input, condition: $condition) {
+export const onCreateTweet = /* GraphQL */ `
+  subscription OnCreateTweet {
+    onCreateTweet {
       id
       username
       content
@@ -167,12 +155,9 @@ export const createTweet = /* GraphQL */ `
     }
   }
 `;
-export const updateTweet = /* GraphQL */ `
-  mutation UpdateTweet(
-    $input: UpdateTweetInput!
-    $condition: ModelTweetConditionInput
-  ) {
-    updateTweet(input: $input, condition: $condition) {
+export const onUpdateTweet = /* GraphQL */ `
+  subscription OnUpdateTweet {
+    onUpdateTweet {
       id
       username
       content
@@ -198,12 +183,9 @@ export const updateTweet = /* GraphQL */ `
     }
   }
 `;
-export const deleteTweet = /* GraphQL */ `
-  mutation DeleteTweet(
-    $input: DeleteTweetInput!
-    $condition: ModelTweetConditionInput
-  ) {
-    deleteTweet(input: $input, condition: $condition) {
+export const onDeleteTweet = /* GraphQL */ `
+  subscription OnDeleteTweet {
+    onDeleteTweet {
       id
       username
       content
@@ -229,12 +211,9 @@ export const deleteTweet = /* GraphQL */ `
     }
   }
 `;
-export const createFollow = /* GraphQL */ `
-  mutation CreateFollow(
-    $input: CreateFollowInput!
-    $condition: ModelFollowConditionInput
-  ) {
-    createFollow(input: $input, condition: $condition) {
+export const onCreateFollow = /* GraphQL */ `
+  subscription OnCreateFollow {
+    onCreateFollow {
       id
       following
       followee
@@ -277,12 +256,9 @@ export const createFollow = /* GraphQL */ `
     }
   }
 `;
-export const updateFollow = /* GraphQL */ `
-  mutation UpdateFollow(
-    $input: UpdateFollowInput!
-    $condition: ModelFollowConditionInput
-  ) {
-    updateFollow(input: $input, condition: $condition) {
+export const onUpdateFollow = /* GraphQL */ `
+  subscription OnUpdateFollow {
+    onUpdateFollow {
       id
       following
       followee
@@ -325,12 +301,9 @@ export const updateFollow = /* GraphQL */ `
     }
   }
 `;
-export const deleteFollow = /* GraphQL */ `
-  mutation DeleteFollow(
-    $input: DeleteFollowInput!
-    $condition: ModelFollowConditionInput
-  ) {
-    deleteFollow(input: $input, condition: $condition) {
+export const onDeleteFollow = /* GraphQL */ `
+  subscription OnDeleteFollow {
+    onDeleteFollow {
       id
       following
       followee

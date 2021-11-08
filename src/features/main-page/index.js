@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Switch, Route } from 'react-router-dom';
 import { SideNavBar } from './SideNavBar';
 import { SideBar } from './SideBar';
@@ -15,7 +15,8 @@ const GridWrapper = styled.div`
 const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr minmax(auto, 600px) 1fr;
-  grid-template-rows: 100vh;
+  grid-template-rows: minmax(100vh, auto);
+  grid-gap: 0 25px;
 `
 
 export function MainPage() {

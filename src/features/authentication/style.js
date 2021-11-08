@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { Container } from "../../shared/Container.styled";
 import { Exit } from "../../shared/component/Icons";
 

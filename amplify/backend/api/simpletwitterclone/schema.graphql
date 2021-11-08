@@ -1,6 +1,29 @@
-type User @model @key(fields: ["username"]) {
+type User @model 
+  @key(fields: ["username"]) {
   username: String!
   email: String!
   name: String!
   birthdate: AWSDate!
+  tweets: [Tweet] @connection(keyName: "byUserByDate", fields: ["username"])
+  followers: [Follow] @connection(keyName: "followers", fields:["username"])
+  following: [Follow] @connection(keyName: "following", fields:["username"])
+}
+
+type Tweet @model 
+  @key(name: "byUserByDate" fields: ["username", "createdAt"], queryField: "byUserByDate") {
+  id: ID!
+  username: String!
+  content: String!
+  createdAt: AWSDateTime!
+  user: User @connection(fields: ["username"])
+}
+
+type Follow @model 
+  @key(name: "followers" fields: ["following"])
+  @key(name: "following" fields: ["followee"])
+{
+  following: String!
+  followee: String!
+  followingUser: User @connection(fields: ["following"])
+  followeeUser: User @connection(fields: ["followee"])
 }
