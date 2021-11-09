@@ -4,7 +4,7 @@ import { Route, BrowserRouter, Switch } from "react-router-dom";
 import ProtectedRoute from "./shared/component/ProtectedRoute";
 import UnprotectedRoute from "./shared/component/UnprotectedRoute";
 import { Landing } from "./features/landing";
-import { Login, Register, VerifyCode } from "./features/authentication"
+import { Login, Register, VerifyCode } from "./features/authentication";
 import { EditProfile } from "./features/main-page/profile";
 import { MainPage } from "./features/main-page";
 import { useDispatch } from "react-redux";
@@ -44,13 +44,17 @@ function App() {
           <UnprotectedRoute exact path="/login" component={Login} />
           <UnprotectedRoute exact path="/signup" component={Register} />
           <UnprotectedRoute exact path="/verifycode" component={VerifyCode} />
-          
+
           {/* Routes that can be accessed when authenticated */}
           <ProtectedRoute exact path={"/home"} component={MainPage} />
-          <ProtectedRoute exact path="/settings/profile" component={EditProfile} />
-          
+          <ProtectedRoute
+            exact
+            path="/settings/profile"
+            component={EditProfile}
+          />
+
           {/* Public routes, can be accessed anytime */}
-          <Route exact path={["/:username"]} component={MainPage} />
+          <Route path={["/:username"]} component={MainPage} />
         </Switch>
       ) : null}
     </BrowserRouter>
